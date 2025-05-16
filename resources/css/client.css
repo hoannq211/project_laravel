@@ -1,0 +1,150 @@
+/* Custom CSS for Timekeeping System */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-bottom: none;
+    font-weight: 600;
+}
+
+/* Time Display Styles */
+.time-display {
+    border: 1px solid #dee2e6;
+}
+
+.current-time {
+    color: #0d6efd;
+}
+
+.current-date {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Attendance Status Styles */
+.attendance-status {
+    border: 1px solid #dee2e6;
+}
+
+.status-icon {
+    color: #28a745;
+}
+
+/* Button Styles */
+.btn-lg {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Calendar Styles */
+#mini-calendar table {
+    width: 100%;
+}
+
+#mini-calendar th {
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0.3rem;
+}
+
+#mini-calendar td {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+#mini-calendar td:hover {
+    background-color: #f8f9fa;
+}
+
+#mini-calendar .text-muted {
+    color: #adb5bd !important;
+}
+
+/* Footer Styles */
+footer {
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer h5 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #0dcaf0 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+
+    .user-info .btn {
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .current-time {
+        font-size: 2rem;
+    }
+}
