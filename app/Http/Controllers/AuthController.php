@@ -16,6 +16,19 @@ class AuthController extends Controller
 {
     public function fromLogin()
     {
+        if (auth()->check()) {
+            $user = User::find(auth()->id());
+
+            if ($user->isCustomer()) {
+                return redirect()->route('home')->with('info', 'Bạn đã đăng nhập');
+            }
+
+            if ($user->isStaff()) {
+                return redirect()->route('staff.homeStaff')->with('info', 'Bạn đã đăng nhập');
+            }
+
+            return redirect()->route('admin.dashboard')->with('info', 'Bạn đã đăng nhập');
+        }
 
         return view("auth.login");
     }
@@ -36,12 +49,14 @@ class AuthController extends Controller
 
             $user = User::find(Auth::id());
             event(new LoginEvent($user));
-            if ($user->isCustomer()) {
-                return redirect()->route('home')->with('success', 'Đăng nhập thành công');
+            if ($user->isAdmin()) {
+                return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');
+            }
+            if ($user->isStaff()) {
+                return redirect()->route('staff.homeStaff')->with('success', 'Đăng nhập thành công');
             }
 
-            return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');
-
+            return redirect()->route('home')->with('success', 'Đăng nhập thành công');
         } else {
             return redirect()->back()->withInput()->with([
                 'error' => 'email hoặc password không đúng'

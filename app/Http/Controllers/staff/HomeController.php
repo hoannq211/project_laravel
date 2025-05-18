@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\staff;
 
+use App\Events\LogtimeSubmitted;
 use App\Http\Controllers\Controller;
 use App\Models\AttendanceLog;
 use App\Models\TimeEntry;
@@ -88,7 +89,7 @@ class HomeController extends Controller
                     'end_time' => $time,
                 ]);
 
-
+                
                 DB::commit();
                 return redirect()->back()->with('success', 'Check-out thành công!');
             }
