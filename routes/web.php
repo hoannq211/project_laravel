@@ -7,7 +7,7 @@ use App\Http\Controllers\auth\ForgotPasswordController;
 use App\Http\Controllers\auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\client\HomeController;
+use App\Http\Controllers\staff\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -30,8 +30,11 @@ Route::get('/lang/{locale}', function ($locale) {
 })->name('lang.switch');
 
 
-
-Route::get('/', [HomeController::class,'index'])->name('home');
+Route::prefix('staff')->as('staff.')->middleware(['auth'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('homeStaff');
+    Route::get('/timekeeping', [HomeController::class, 'timekeeping'])->name('timekeeping');
+    Route::post('/timekeeping', [HomeController::class, 'timekeepingPost'])->name('timekeeping');
+});
 
 Route::get("/login", [AuthController::class, 'fromLogin'])->name("login");
 Route::get("/register", [AuthController::class, 'fromRegister'])->name("register");
@@ -57,5 +60,4 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified'])->group(fu
     Route::post('attendance-log/{id}/restore', [AttendanceLogController::class, 'restore'])->name('attendance-log.restore');
     Route::delete('attendance-log/{id}/force-delete', [AttendanceLogController::class, 'forceDelete'])->name('attendance-log.force-delete');
     Route::resource('attendance-log', AttendanceLogController::class);
-
 });
