@@ -57,7 +57,17 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->roles()->where('name', $roleName)->exists();
     }
-    public function isCustomer () {
-        return $this->hasRole('customer');
+    public function hasAnyRole ($roleNames) {
+        if(is_array($roleNames)){
+            return $this->roles()->whereIn('name', $roleNames)->exists();
+        }
+
+        return $this->roles()->where('name', $roleNames)->exists();
+    }
+    public function isAdmin () {
+        return $this->hasRole('admin');
+    }
+    public function isStaff () {
+        return $this->hasAnyRole(['Nhân Viên','tạp vụ','Quản lý']);
     }
 }
