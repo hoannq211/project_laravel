@@ -6,23 +6,13 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link {{ Request::routeIs('staff.homeStaff') ? 'active' : '' }}" href="{{ route('staff.homeStaff') }}">
                             <i class="fas fa-home me-1"></i> Trang chủ
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link {{ Request::routeIs('staff.timekeeping') ? 'active' : '' }}" href="{{ route('staff.timekeeping') }}">
                             <i class="fas fa-calendar-check me-1"></i> Chấm công
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-history me-1"></i> Lịch sử
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-file-alt me-1"></i> Báo cáo
                         </a>
                     </li>
                     <li class="nav-item">
