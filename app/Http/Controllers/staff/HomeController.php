@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\staff;
 
 use App\Events\LogtimeSubmitted;
+use App\Events\UserTimeLogged;
 use App\Http\Controllers\Controller;
 use App\Models\AttendanceLog;
 use App\Models\TimeEntry;
@@ -37,7 +38,7 @@ class HomeController extends Controller
         $timeEntries = collect();
         if ($attendanceLog) {
             $timeEntries = $attendanceLog->timeEntries()->get();
-            
+
             $lastEntry = $attendanceLog->timeEntries()->latest()->first();
             if ($lastEntry && $lastEntry->start_time && !$lastEntry->end_time) {
                 $hasCheckedIn = true;  // Đã check-in nhưng chưa check-out
@@ -73,6 +74,7 @@ class HomeController extends Controller
                     "end_time" => null
                 ]);
 
+                event(new UserTimeLogged(Auth::user(), 'check-in', $time));
                 DB::commit();
                 return redirect()->back()->with('success', 'Bạn đã checkin thành công');
             }
@@ -89,7 +91,8 @@ class HomeController extends Controller
                     'end_time' => $time,
                 ]);
 
-                
+
+                event(new UserTimeLogged(Auth::user(), 'check-out', $time));
                 DB::commit();
                 return redirect()->back()->with('success', 'Check-out thành công!');
             }

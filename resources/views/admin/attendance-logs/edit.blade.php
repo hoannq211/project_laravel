@@ -55,7 +55,7 @@
                             <div class="form-group mb-3">
                                 <label>Thời gian bắt đầu</label>
                                 <input type="number" class="form-control @error('time_logs.'.$index.'.start_time') is-invalid @enderror"
-                                       name="time_logs[{{ $index }}][start_time]" min="0" max="24" step="0.5"
+                                       name="time_logs[{{ $index }}][start_time]" min="0" max="24" step="0.01"
                                        value="{{ old('time_logs.' . $index . '.start_time', $entry->start_time) }}">
                                 @error('time_logs.'.$index.'.start_time')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -67,7 +67,7 @@
                             <div class="form-group mb-3">
                                 <label>Thời gian kết thúc</label>
                                 <input type="number" class="form-control @error('time_logs.'.$index.'.end_time') is-invalid @enderror"
-                                       name="time_logs[{{ $index }}][end_time]" min="0" max="24" step="0.5"
+                                       name="time_logs[{{ $index }}][end_time]" min="0" max="24" step="0.01"
                                        value="{{ old('time_logs.'.$index.'.end_time', $entry->end_time) }}">
                                 @error('time_logs.'.$index.'.end_time')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -124,7 +124,7 @@
                     <div class="form-group mb-3">
                         <label>Thời gian bắt đầu</label>
                         <input type="number" class="form-control"
-                               name="time_logs[${index}][start_time]" min="0" max="24" step="0.5">
+                               name="time_logs[${index}][start_time]" min="0" max="24" step="0.01">
                     </div>
                 </div>
 
@@ -132,7 +132,7 @@
                     <div class="form-group mb-3">
                         <label>Thời gian kết thúc</label>
                         <input type="number" class="form-control"
-                               name="time_logs[${index}][end_time]" min="0" max="24" step="0.5">
+                               name="time_logs[${index}][end_time]" min="0" max="24" step="0.01">
                     </div>
                 </div>
 

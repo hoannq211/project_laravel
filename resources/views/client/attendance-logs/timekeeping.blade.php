@@ -183,7 +183,7 @@
                             </button>
                         </form>
 
-                        <form action="{{ route('staff.timekeeping') }}" method="POST">
+                        <form action="{{ route('staff.timekeeping.post') }}" method="POST">
                             @csrf
                             <input type="hidden" name="action" value="check-out">
                             <button class="btn btn-danger btn-lg" {{ $hasCheckedIn && !$hasCheckedOut ? '' : 'disabled' }}>
@@ -206,7 +206,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ number_format($timeEntry->start_time, 2) }}</td>
                                         <td>{{ number_format($timeEntry->end_time, 2) }}</td>
-                                        
+
                                     </tr>
                                 @endforeach
 
@@ -227,7 +227,7 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center mb-3">
-                        <img src="https://via.placeholder.com/150" class="rounded-circle img-thumbnail" alt="Avatar">
+                        <img src="#" class="rounded-circle img-thumbnail" alt="Avatar">
                     </div>
                     <table class="table table-bordered">
                         <tr>

@@ -20,3 +20,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('user-logtime.{userId}', function ($user, $userId) {
     return $user->id == $userId;
 });
+
+Broadcast::channel('admin-timekeeping', function ($user) {
+    return $user->isAdmin();
+});
