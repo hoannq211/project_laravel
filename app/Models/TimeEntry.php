@@ -16,10 +16,4 @@ class TimeEntry extends Model
         return $this->belongsTo(AttendanceLog::class);
     }
 
-     public function timeEntries()
-    {
-        return $this->hasMany(TimeEntry::class);
-    }
-
-    
 }

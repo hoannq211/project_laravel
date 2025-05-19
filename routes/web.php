@@ -36,7 +36,7 @@ Route::get('/', function () {
 Route::prefix('staff')->as('staff.')->middleware(['auth', 'checkRole:admin,Nhân Viên,tạp vụ,Quản lý'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('homeStaff');
     Route::get('/timekeeping', [HomeController::class, 'timekeeping'])->name('timekeeping');
-    Route::post('/timekeeping', [HomeController::class, 'timekeepingPost'])->name('timekeeping');
+    Route::post('/timekeeping', [HomeController::class, 'timekeepingPost'])->name('timekeeping.post');
 });
 
 Route::get("/login", [AuthController::class, 'fromLogin'])->name("login");

@@ -18,6 +18,7 @@
 
     <!-- Custom CSS -->
     @vite('resources/css/admin.css')
+    @vite('resources/js/app.js')
 
     @stack('styles')
 </head>
@@ -52,20 +53,8 @@
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <!-- Laravel Echo -->
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-    <script src="{{ asset('js/admin-notifications.js') }}"></script>
-
     @stack('scripts')
-    {{-- <script>
-        window.Echo.channel('login-channel')
-            .listen('.login-event', (e) => {
-                const logList = document.getElementById('login-logs');
-                const logItem = document.createElement('li');
-                logItem.textContent = `User ${e.user.name} logged in at ${e.loginTime}`;
-                logList.appendChild(logItem);
-            });
-    </script> --}}
+
 </body>
 
 </html>
