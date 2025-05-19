@@ -68,6 +68,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasRole('admin');
     }
     public function isStaff () {
-        return $this->hasAnyRole(['Nhân Viên','tạp vụ','Quản lý']);
+        return $this->hasAnyRole(['Nhân Viên']);
     }
 }

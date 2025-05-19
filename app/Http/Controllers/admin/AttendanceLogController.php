@@ -152,7 +152,7 @@ class AttendanceLogController extends Controller
 
     public function trash()
     {
-        $attendanceLogs = AttendanceLog::with('user', 'images')->onlyTrashed()->paginate(10);
+        $attendanceLogs = AttendanceLog::with('user')->onlyTrashed()->paginate(10);
 
         return view('admin.attendance-logs.trash', compact('attendanceLogs'));
     }
@@ -168,10 +168,6 @@ class AttendanceLogController extends Controller
     public function forceDelete($id)
     {
         $attendanceLog = AttendanceLog::onlyTrashed()->findOrFail($id);
-        foreach ($attendanceLog->images as $image) {
-            Storage::disk('public')->delete($image->url);
-            $image->delete();
-        }
 
         $attendanceLog->forceDelete();
 

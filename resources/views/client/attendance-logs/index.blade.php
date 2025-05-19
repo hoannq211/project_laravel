@@ -26,8 +26,7 @@
                                     <td>{{ $attendanceLog['date'] }}</td>
                                     <td>{{ number_format($attendanceLog->total_hours, 2) }}</td>
                                     <td>
-                                        <a href="{{ route('admin.attendance-log.edit', $attendanceLog) }}"
-                                            class="btn btn-primary btn-sm">
+                                        <a href="#" class="btn btn-primary btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
@@ -36,6 +35,9 @@
 
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center">
+                        {{ $attendanceLogs->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>

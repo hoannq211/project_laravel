@@ -19,15 +19,15 @@ class AuthController extends Controller
         if (auth()->check()) {
             $user = User::find(auth()->id());
 
-            if ($user->isCustomer()) {
-                return redirect()->route('home')->with('info', 'Bạn đã đăng nhập');
+            if ($user->isAdmin()) {
+                return redirect()->route('admin.dashboard')->with('info', 'Bạn đã đăng nhập');
             }
 
             if ($user->isStaff()) {
                 return redirect()->route('staff.homeStaff')->with('info', 'Bạn đã đăng nhập');
             }
 
-            return redirect()->route('admin.dashboard')->with('info', 'Bạn đã đăng nhập');
+            return redirect()->route('home')->with('info', 'Bạn đã đăng nhập');
         }
 
         return view("auth.login");
@@ -78,7 +78,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ];
         $user = User::create($data);
-        $user->roles()->attach(4);
+        $user->roles()->attach(2);
 
         SendEmailVerification::dispatch($user);
 

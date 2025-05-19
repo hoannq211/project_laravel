@@ -29,43 +29,10 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td class="d-flex align-items-center gap-3">
-                                        @if ($attendanceLog->images && count($attendanceLog->images))
-                                            <div data-bs-toggle="modal" data-bs-target="#imageModal">
-                                                <img src="{{ asset('storage/' . $attendanceLog->images->first()->url) }}"
-                                                    width="80px" height="80px" class="rounded-3">
-                                            </div>
-                                        @endif
-                                        @if ($attendanceLog->images && count($attendanceLog->images))
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="imageModal" tabindex="-1"
-                                                aria-labelledby="imageModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="imageModalLabel">Ảnh đã tải lên</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Đóng"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                @foreach ($attendanceLog->images as $image)
-                                                                    {{-- @dd(asset('storage/' . $image->url)) --}}
-                                                                    <div class="col-md-4 mb-3">
-                                                                        <img src="{{ asset('storage/' . $image->url) }}"
-                                                                            class="img-fluid rounded shadow-sm"
-                                                                            alt="Ảnh chấm công">
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
                                         <p>{{ $attendanceLog->user->name }}</p>
                                     </td>
                                     <td>{{ $attendanceLog->date }}</td>
-                                    <td>{{ $attendanceLog->spent_time }}</td>
+                                    <td>{{ $attendanceLog->total_hours }}</td>
                                     <td>
                                         <form action="{{ route('admin.attendance-log.restore', $attendanceLog->id) }}"
                                             method="POST" class="d-inline">
@@ -90,7 +57,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center">
-                        {{ $attendanceLogs->links() }}
+                        {{ $attendanceLogs->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

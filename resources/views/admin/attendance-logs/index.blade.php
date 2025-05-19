@@ -19,6 +19,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Danh sách chấm công</h6>
+            <a href="{{ route('admin.attendance-log.trash') }}" class="btn btn-danger">thùng rác</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -61,7 +62,7 @@
                     </tbody>
                 </table>
             </div>
-            {{ $attendanceLogs->links() }}
+            {{ $attendanceLogs->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>
